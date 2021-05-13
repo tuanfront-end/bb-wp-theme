@@ -31,16 +31,6 @@
 
 <?php wp_footer(); ?>
 
-<script type="module">
-	import RefreshRuntime from 'http://localhost:3000/@react-refresh'
-	RefreshRuntime.injectIntoGlobalHook(window)
-	window.$RefreshReg$ = () => {}
-	window.$RefreshSig$ = () => (type) => type
-	window.__vite_plugin_react_preamble_installed__ = true
-</script>
-<!-- if development -->
-<script type="module" src="http://localhost:3000/@vite/client"></script>
-<script type="module" src="http://localhost:3000/src/main.tsx"></script>
 </body>
 
 </html>

@@ -38,3 +38,4 @@ function bb_theme_pingback_header()
 	}
 }
 add_action('wp_head', 'bb_theme_pingback_header');
+// 

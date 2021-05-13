@@ -9,6 +9,7 @@
  */
 
 use BB_Theme\Enqueuescripts;
+use BB_Theme\FunctionHelpers;
 
 define('_S_PREFIX', 'bb_');
 
@@ -35,6 +36,7 @@ function myVardump($args)
 
 // CLASSES
 new Enqueuescripts();
+new FunctionHelpers();
 // 
 
 if (!function_exists('bb_theme_setup')) :
@@ -155,3 +157,4 @@ require get_template_directory() . '/inc/template-functions.php';
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+// 
