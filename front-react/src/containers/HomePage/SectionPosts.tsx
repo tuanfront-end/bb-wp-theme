@@ -15,6 +15,7 @@ export interface SectionPostsProps {
 const SectionPosts: React.FC<SectionPostsProps> = ({ left, right }) => {
   useEffect(() => {
     new Glide(".bb-HomePage-SectionPosts__posts", {
+      type: "carousel",
       perView: 3,
       autoplay: 4500,
       animationDuration: 900,

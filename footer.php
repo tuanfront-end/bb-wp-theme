@@ -19,11 +19,11 @@ if (class_exists('Redux')) {
 ?>
 
 <footer id="colophon" class="site-footer container mx-auto flex flex-col md:flex-row items-center md:justify-between space-y-5 md:space-y-0 py-10 md:pt-20 bg-white">
-	<div class="site-info flex items-center space-x-4">
-		<a class="font-bold" href="<?php echo esc_url(home_url('/')); ?>">
+	<div class="site-info flex flex-col sm:flex-row text-center sm:text-left items-center space-x-4">
+		<a class="font-bold mb-1 sm:mb-0" href="<?php echo esc_url(home_url('/')); ?>">
 			<?php echo esc_html($logoString); 	?>
 		</a>
-		<span class="sep text-gray-400"> | </span>
+		<span class="sep text-gray-400 hidden sm:block"> | </span>
 		<span class="text-gray-500">
 			<?php echo esc_html($copyright); 	?>
 		</span>

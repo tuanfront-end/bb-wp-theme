@@ -8,6 +8,7 @@ export interface SectionHeroProps {
 export const SectionHero: React.FC<SectionHeroProps> = ({ imgs }) => {
   useEffect(() => {
     new Glide(".glide", {
+      type: "carousel",
       autoplay: 4000,
       animationDuration: 1000,
       gap: 0,

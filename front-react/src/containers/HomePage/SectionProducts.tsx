@@ -11,6 +11,7 @@ export interface SectionProductsProps {
 const SectionProducts: React.FC<SectionProductsProps> = ({ products }) => {
   useEffect(() => {
     new Glide(".bb-HomePage-SectionProducts", {
+      type: "carousel",
       perView: 4,
       autoplay: 4000,
       animationDuration: 800,
