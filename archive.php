@@ -1,51 +1,45 @@
 <?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package bb-theme
- */
 
-get_header();
+/* Start the Loop */
+
+use BB_Theme\FunctionHelpers;
+
+$catTitle = get_the_archive_title();
+$_s_products_converted = [];
+if (have_posts()) {
+	while (have_posts()) :
+		the_post();
+		$_s_products_converted[] = FunctionHelpers::converPostToJsPostData($post);
+	endwhile;
+}
 ?>
+<script type="text/javascript">
+	var __SERVER_DATA__ = {
+		postsPage: {
+			title: <?php echo json_encode($catTitle); ?>,
+			posts: <?php echo json_encode($_s_products_converted); ?>
+		}
+	}
+</script>
 
-	<main id="primary" class="site-main">
+<!-- HJEADER -->
+<?php get_header(); ?>
 
-		<?php if ( have_posts() ) : ?>
+<main id="bb-posts" class="products-page">
+	<?php if (have_posts()) : ?>
+		<div id="bb-posts-react">
+		</div>
+		<!-- NAV -->
+		<div class="flex items-center justify-center space-x-2">
+			<?php the_posts_navigation(); ?>
+		</div>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+	<?php else :
+		get_template_part('template-parts/content', 'none');
+	endif;
+	?>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

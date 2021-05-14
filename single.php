@@ -1,40 +1,55 @@
 <?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package bb-theme
- */
+if (get_post_type() === 'product') : ?>
+	<?php
+	$product = wc_get_product($post->ID);
+	$downloads = $product->get_downloads() ?? [];
+	$videoUrl = $product->get_attribute('video');
 
+	$dowloadUrls = [];
+	foreach ($downloads as $key => $each_download) {
+		$dowloadUrls[] = $each_download["file"];
+	}
+	?>
+	<script type="text/javascript">
+		var __SERVER_DATA__ = {
+			productSinglePage: {
+				product: <?php echo json_encode($post); ?>,
+				dowloads: <?php echo json_encode($dowloadUrls); ?>,
+				video: <?php echo json_encode($videoUrl); ?>,
+			}
+		}
+	</script>
+<?php endif;
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="page-single">
+	<?php
+	// PRODUCT SINGLE
+	if (get_post_type() === 'product') : ?>
+		<main id="bb-product-single-react">
+		</main>
+	<?php endif; ?>
 
-		<?php
-		while ( have_posts() ) :
+	<!-- // POST SINGLE -->
+	<?php
+	if (get_post_type() === 'post') :
+		while (have_posts()) :
 			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part('template-parts/content', get_post_type());
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'bb-theme' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'bb-theme' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
 
 			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
+			if (comments_open() || get_comments_number()) :
 				comments_template();
 			endif;
 
 		endwhile; // End of the loop.
-		?>
+	endif;
+	?>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

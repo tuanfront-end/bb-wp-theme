@@ -85,5 +85,17 @@ class Enqueuescripts
                 wp_enqueue_script($name, get_template_directory_uri() . '/front-react/build/static/js/' . $fullName, [], _S_VERSION, true);
             }
         }
+
+        $dirJS2 = [];
+        if (is_dir(get_stylesheet_directory() . '/front-react/build/js')) {
+            $dirJS2 = new DirectoryIterator(get_stylesheet_directory() . '/front-react/build/js');
+        }
+        foreach ($dirJS2 as $file) {
+            if (pathinfo($file, PATHINFO_EXTENSION) === 'js') {
+                $fullName = basename($file);
+                $name = _S_PREFIX . substr(basename($fullName), 0, strpos(basename($fullName), '.'));
+                wp_enqueue_script($name, get_template_directory_uri() . '/front-react/build/js/' . $fullName, [], _S_VERSION, true);
+            }
+        }
     }
 }

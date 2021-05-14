@@ -8,11 +8,24 @@ declare global {
   var __SERVER_DATA__: any;
 }
 
-export type RootId = "bb-home-react" | "bb-product-page-react";
+export type RootId =
+  | "bb-home-react"
+  | "bb-products-react"
+  | "bb-posts-react"
+  | "bb-product-single-react";
 
 const rootEl = (function getRootElement(): RootId | null {
   if (document.getElementById("bb-home-react")) {
     return "bb-home-react";
+  }
+  if (document.getElementById("bb-products-react")) {
+    return "bb-products-react";
+  }
+  if (document.getElementById("bb-posts-react")) {
+    return "bb-posts-react";
+  }
+  if (document.getElementById("bb-product-single-react")) {
+    return "bb-product-single-react";
   }
   return null;
 })();

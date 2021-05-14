@@ -5,8 +5,10 @@ export interface PostCardProps {
   link: string;
   desc: string;
   date: string;
+  className?: string;
 }
 const PostCard: React.FC<PostCardProps> = ({
+  className,
   title,
   img,
   link,
@@ -17,9 +19,9 @@ const PostCard: React.FC<PostCardProps> = ({
     <a
       href={link}
       title={title}
-      className="bb-PostCard block relative rounded-2xl overflow-hidden bg-gray-400"
+      className={`bb-PostCard block relative rounded-2xl overflow-hidden ${className}`}
     >
-      <div className="w-full h-48">
+      <div className="w-full h-48 bg-gray-400">
         <img className="w-full h-full object-cover" src={img} alt={title} />
       </div>
       <div className="bg-white p-4 xl:p-5 2xl:p-6 space-y-3">

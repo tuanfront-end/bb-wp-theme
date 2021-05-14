@@ -12,6 +12,7 @@ use BB_Theme\Enqueuescripts;
 use BB_Theme\FunctionHelpers;
 
 define('_S_PREFIX', 'bb_');
+define('_S_REDUX', 'bb_redux');
 
 require_once get_template_directory() . '/vendor/autoload.php';
 //
@@ -132,6 +133,7 @@ if (!function_exists('bb_theme_setup')) :
 endif;
 add_action('after_setup_theme', 'bb_theme_setup');
 
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -149,7 +151,12 @@ add_action('after_setup_theme', 'bb_theme_content_width', 0);
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
+require_once get_template_directory() . '/app/TGM/requiredPlugins.php';
+
+// 
 require get_template_directory() . '/inc/template-functions.php';
+// 
+require get_template_directory() . '/inc/redux-theme-option.php';
 
 /**
  * Load Jetpack compatibility file.
@@ -158,3 +165,5 @@ if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 // 
+add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+add_filter('woocommerce_enqueue_styles', '__return_false');

@@ -9,7 +9,7 @@ export interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ title, img, link }) => {
   return (
     <a href={link} className="bb-ProductCard block" title={title}>
-      <div className="w-full h-80 rounded-2xl overflow-hidden">
+      <div className="w-full h-80 rounded-2xl overflow-hidden bg-gray-400">
         <img className="w-full h-full object-cover" src={img} alt={title} />
       </div>
       <div className="px-3 2xl:px-5 transform -translate-y-1/2 text-left">

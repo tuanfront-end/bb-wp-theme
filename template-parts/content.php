@@ -1,12 +1,6 @@
 <?php
 
-/**
- * Template part for displaying posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package bb-theme
- */
+use BB_Theme\FunctionHelpers;
 
 ?>
 
@@ -14,21 +8,21 @@
 	<header class="entry-header">
 		<?php
 		if (is_singular()) :
-			the_title('<h1 class="entry-title">', '</h1>');
+			the_title('<h1 class="entry-title text-5xl mb-1 font-bold">', '</h1>');
 		else :
-			the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+			the_title('<h2 class="entry-title text-5xl mb-1 font-bold"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
 		endif;
 
 		if ('post' === get_post_type()) :
 		?>
-			<div class="entry-meta">
-
+			<div class="entry-meta text-gray-500 font-medium text-base">
+				<?php echo FunctionHelpers::getDateFormat($post->post_date); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
 
-	<div class="entry-content">
+	<div class="entry-content prose lg:prose-lg w-full">
 		<?php
 		the_content(
 			sprintf(

@@ -18,8 +18,16 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<script>
+		if (!__SERVER_DATA__) {
+			var __SERVER_DATA__ = {};
+		}
+	</script>
 
-	<?php wp_head(); ?>
+	<?php
+	$logo = Redux::get_option(_S_REDUX, 'options--logo') ?? [];
+	wp_head();
+	?>
 	<!-- CSS REACT -->
 </head>
 
@@ -29,35 +37,31 @@
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'bb-theme'); ?></a>
 
 		<header id="masthead" class="site-header">
-			<div class="site-branding">
-				<?php
-				the_custom_logo();
-				if (is_front_page() && is_home()) :
-				?>
-					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-				<?php
-				else :
-				?>
-					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-				<?php
-				endif;
-				$bb_theme_description = get_bloginfo('description', 'display');
-				if ($bb_theme_description || is_customize_preview()) :
-				?>
-					<p class="site-description"><?php echo $bb_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-												?></p>
-				<?php endif; ?>
-			</div><!-- .site-branding -->
+			<div class="site-header-wrap container mx-auto flex items-center justify-between">
+				<div class="site-branding">
+					<a href="<?php echo esc_url(home_url('/')); ?>" target="_blank" rel="noopener noreferrer">
+						<img class="block max-h-16 lg:max-h-20" src="<?php echo esc_url($logo['url']); ?>" alt="" />
+					</a>
+				</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Primary Menu', 'bb-theme'); ?></button>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
-					)
-				);
-				?>
-			</nav><!-- #site-navigation -->
+				<nav id="site-navigation" class="main-navigation">
+					<button id="menu-toggle" class="menu-toggle text-2xl text-gray-900">
+						<i class="las la-bars"></i>
+					</button>
+					<div id="primary-menu-wrap">
+						<button id="close-menu-toggle" class="block md:hidden text-2xl text-gray-900 absolute right-0 top-0 p-2">
+							<i class="las la-times"></i>
+						</button>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-1',
+								'menu_id'        => 'primary-menu',
+							)
+						);
+						?>
+					</div>
+
+				</nav><!-- #site-navigation -->
+			</div>
 		</header><!-- #masthead -->

@@ -93,10 +93,10 @@ export const HomePage = () => {
   return (
     <div className="bb-HomePage">
       <SectionHero {...DATA.sectionHero} />
-      <div className="container mx-auto mt-16 mb-4">
+      <div className="container mx-auto mt-10 md:mt-16 mb-4">
         <SectionProducts {...DATA.sectionProducts} />
       </div>
-      <section className="py-24 bg-gradient-to-br from-[#FFE3E3] to-[#E3F8FF]">
+      <section className="py-10 md:py-24 bg-gradient-to-br from-[#FFE3E3] to-[#E3F8FF]">
         <div className="container mx-auto">
           <SectionPosts {...DATA.sectionPosts} />
         </div>

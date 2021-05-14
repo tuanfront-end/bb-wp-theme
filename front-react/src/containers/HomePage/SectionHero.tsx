@@ -11,6 +11,7 @@ export const SectionHero: React.FC<SectionHeroProps> = ({ imgs }) => {
       autoplay: 4000,
       animationDuration: 1000,
       gap: 0,
+      throttle: 0,
     }).mount();
   }, []);
 
