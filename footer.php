@@ -18,7 +18,7 @@ if (class_exists('Redux')) {
 
 ?>
 
-<footer id="colophon" class="site-footer container mx-auto flex flex-col md:flex-row items-center md:justify-between space-y-5 md:space-y-0 py-10 md:py-20 bg-white">
+<footer id="colophon" class="site-footer container mx-auto flex flex-col md:flex-row items-center md:justify-between space-y-5 md:space-y-0 py-10 md:pt-20 bg-white">
 	<div class="site-info flex items-center space-x-4">
 		<a class="font-bold" href="<?php echo esc_url(home_url('/')); ?>">
 			<?php echo esc_html($logoString); 	?>

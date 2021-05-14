@@ -22,8 +22,15 @@
       @apply block md:hidden;
     }
     #primary-menu-wrap {
-      @apply hidden shadow-lg md:shadow-none md:block fixed md:static top-0 left-0 w-96 md:w-auto max-w-full h-full bg-white py-20 px-3 md:py-0 md:px-0;
+      @apply hidden md:block fixed md:static top-0 left-0 w-96 md:w-auto max-w-full h-full bg-white py-20 px-3 md:py-0 md:px-0 shadow-lg;
+      z-index: 999990;
     }
+    @screen md {
+      #primary-menu-wrap {
+        box-shadow: none !important;
+      }
+    }
+
     .nav-menu {
       @apply flex items-center flex-col flex-grow md:flex-row space-y-6 md:space-y-0 md:space-x-12;
       > li {
@@ -34,6 +41,16 @@
           @apply block py-4 px-8 rounded-full bg-bg-button-1 text-gray-800;
         }
       }
+    }
+  }
+}
+
+//
+.bb-ProducSingle {
+  .bb-ProducSingle__content-video {
+    iframe {
+      margin: 0 auto;
+      max-width: 100%;
     }
   }
 }

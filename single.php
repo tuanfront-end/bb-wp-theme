@@ -1,4 +1,7 @@
 <?php
+
+use BB_Theme\FunctionHelpers;
+
 if (get_post_type() === 'product') : ?>
 	<?php
 	$product = wc_get_product($post->ID);
@@ -9,6 +12,9 @@ if (get_post_type() === 'product') : ?>
 	foreach ($downloads as $key => $each_download) {
 		$dowloadUrls[] = $each_download["file"];
 	}
+
+	$featuredImg = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'single-post-thumbnail');
+	$post->imageThumbnail = $featuredImg[0];
 	?>
 	<script type="text/javascript">
 		var __SERVER_DATA__ = {
@@ -36,15 +42,7 @@ get_header();
 	if (get_post_type() === 'post') :
 		while (have_posts()) :
 			the_post();
-
 			get_template_part('template-parts/content', get_post_type());
-
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if (comments_open() || get_comments_number()) :
-				comments_template();
-			endif;
-
 		endwhile; // End of the loop.
 	endif;
 	?>

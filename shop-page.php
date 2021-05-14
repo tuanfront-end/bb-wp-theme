@@ -51,7 +51,7 @@ foreach ($allCategories as $oCate) {
 	var __SERVER_DATA__ = {
 		productsPage: {
 			products: <?php echo json_encode($allProducts); ?>,
-			categories: <?php echo json_encode($allCategories); ?>,
+			categories: <?php echo json_encode(array_values($allCategories)); ?>,
 		}
 	}
 </script>

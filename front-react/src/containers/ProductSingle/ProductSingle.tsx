@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import parse from "html-react-parser";
 
 interface ProductDetailType {
   ID: string;
@@ -51,7 +52,7 @@ const ProductSingle = () => {
             {product.post_title}
           </h1>
           <p className="text-gray-500 leading-relaxed mb-8">
-            {product.post_excerpt}
+            {parse(product.post_excerpt)}
           </p>
           {dowloads.map((item, index) => (
             <a
@@ -88,17 +89,14 @@ const ProductSingle = () => {
           </button>
           <div className="absolute bottom-0 w-full left-0 h-1 bg-gray-50 z-0"></div>
         </header>
-        <div className="prose lg:prose-lg max-w-7xl mx-auto px-4 pt-9">
-          {tabIndex === 1 ? (
-            product.post_content
-          ) : (
-            <iframe
-              className="mx-auto max-w-full"
-              width="620"
-              height="445"
-              src={video}
-            ></iframe>
-          )}
+        <div
+          className={`bb-ProducSingle__content prose lg:prose-lg max-w-7xl mx-auto px-4 pt-9 ${
+            tabIndex === 1
+              ? "bb-ProducSingle__content-content"
+              : "bb-ProducSingle__content-video"
+          }`}
+        >
+          {tabIndex === 1 ? parse(product.post_content) : parse(video)}
         </div>
       </div>
     </div>
