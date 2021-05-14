@@ -21,19 +21,12 @@ foreach ($_s_products as $oPost) {
     $_s_products_converted[] = FunctionHelpers::converProductToJsProduct($oPost);
 }
 
-$galleriesId = "";
-$aboutHeading = "";
-$aboutContent = "";
-$aboutBlogLink = "";
-if (class_exists('Redux')) {
-    $galleriesId = Redux::get_option(_S_REDUX, 'home--banner-gallery') ?? "";
-    // 
-    $aboutHeading = Redux::get_option(_S_REDUX, 'home--about-heading') ?? "";
-    $aboutContent = Redux::get_option(_S_REDUX, 'home--about-content') ?? "";
-    $aboutBlogLink = Redux::get_option(_S_REDUX, 'home--about-blogs-link') ?? "";
-    // 
-}
-
+$galleriesId = Redux::get_option(_S_REDUX, 'home--banner-gallery') ?? "";
+// 
+$aboutHeading = Redux::get_option(_S_REDUX, 'home--about-heading') ?? "";
+$aboutContent = Redux::get_option(_S_REDUX, 'home--about-content') ?? "";
+$aboutBlogLink = Redux::get_option(_S_REDUX, 'home--about-blogs-link') ?? "";
+// 
 
 $cl_banners = [];
 foreach (explode(',', $galleriesId) as $id) {

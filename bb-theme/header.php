@@ -25,10 +25,7 @@
 	</script>
 
 	<?php
-	$logo = [];
-	if (class_exists('Redux')) {
-		$logo = Redux::get_option(_S_REDUX, 'options--logo') ?? [];
-	}
+	$logo = Redux::get_option(_S_REDUX, 'options--logo') ?? [];
 	wp_head();
 	?>
 	<!-- CSS REACT -->

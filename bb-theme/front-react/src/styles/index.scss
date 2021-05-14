@@ -1,0 +1,39 @@
+// Required Core Stylesheet
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+
+// Optional Theme Stylesheet
+// @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+
+.glide__bullet--active {
+  @apply shadow-md border-blue-400;
+}
+//
+//
+.site-header {
+  @apply bg-white py-6;
+  .site-title {
+    @apply text-4xl font-bold;
+  }
+  .site-branding {
+    flex-shrink: 0;
+  }
+  #site-navigation {
+    .menu-toggle {
+      @apply block md:hidden;
+    }
+    #primary-menu-wrap {
+      @apply hidden shadow-lg md:shadow-none md:block fixed md:static top-0 left-0 w-96 md:w-auto max-w-full h-full bg-white py-20 px-3 md:py-0 md:px-0;
+    }
+    .nav-menu {
+      @apply flex items-center flex-col flex-grow md:flex-row space-y-6 md:space-y-0 md:space-x-12;
+      > li {
+        a {
+          @apply font-semibold text-2xl md:text-base xl:text-lg text-gray-600 leading-none;
+        }
+        &.current-menu-item > a {
+          @apply block py-4 px-8 rounded-full bg-bg-button-1 text-gray-800;
+        }
+      }
+    }
+  }
+}

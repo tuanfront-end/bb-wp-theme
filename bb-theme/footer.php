@@ -1,21 +1,12 @@
 <?php
 // 
 // $logo = Redux::get_option(_S_REDUX, 'options--logo') ?? [];
-$logoString =  '';
-$copyright = "";
-$facebookUrl = "";
-$twitterUrl = "";
-$instagramUrl =  "";
-$youtubeUrl =  "";
-if (class_exists('Redux')) {
-	$logoString = Redux::get_option(_S_REDUX, 'options--logo-text') ?? '';
-	$copyright = Redux::get_option(_S_REDUX, 'options--copyright') ?? "";
-	$facebookUrl = Redux::get_option(_S_REDUX, 'options--facebook-url') ?? "";
-	$twitterUrl = Redux::get_option(_S_REDUX, 'options--twitter-url') ?? "";
-	$instagramUrl = Redux::get_option(_S_REDUX, 'options--instagram-url') ?? "";
-	$youtubeUrl = Redux::get_option(_S_REDUX, 'options--youtube-url') ?? "";
-}
-
+$logoString = Redux::get_option(_S_REDUX, 'options--logo-text') ?? '';
+$copyright = Redux::get_option(_S_REDUX, 'options--copyright') ?? "";
+$facebookUrl = Redux::get_option(_S_REDUX, 'options--facebook-url') ?? "";
+$twitterUrl = Redux::get_option(_S_REDUX, 'options--twitter-url') ?? "";
+$instagramUrl = Redux::get_option(_S_REDUX, 'options--instagram-url') ?? "";
+$youtubeUrl = Redux::get_option(_S_REDUX, 'options--youtube-url') ?? "";
 ?>
 
 <footer id="colophon" class="site-footer container mx-auto flex flex-col md:flex-row items-center md:justify-between space-y-5 md:space-y-0 py-10 md:py-20 bg-white">
