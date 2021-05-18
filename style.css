@@ -21,3 +21,31 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+
+p.has-custom-size.has-custom-weight.mb-0.mt-0 {
+  font-size: 20px !important;
+}
+
+body .site-header #site-navigation .nav-menu > li.current-menu-item > a {
+  background-color: #3f47cc !important;
+  padding-bottom: 1.1rem !important;
+  color: white !important;
+}
+
+.bg-\[\#7069FA\] {
+  background-color: #3f47cc !important;
+}
+
+.border-\[\#8888FC\] {
+  border-color: #3f47cc !important;
+}
+
+.bb-ProductCard .line-clamp-1 {
+  -webkit-line-clamp: 3;
+  line-height: 1.4;
+}
+
+.bb-ProductPage
+  .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3.xl\:grid-cols-4.gap-6 {
+  row-gap: 0;
+}
